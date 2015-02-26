@@ -16,9 +16,9 @@ all: interpreter repl js
 # list of targets that should be recompiled every time
 .PHONY: default
 
-CAMLGRAPH = /home/richard/devel/ocamlgraph
-JSOFOCAML = /home/richard/.opam/4.01.0/lib/js_of_ocaml
-STUBLIBS = /home/richard/.opam/4.01.0/lib/stublibs/
+CAMLGRAPH = /home/ubuntu/devel/ocamlgraph
+JSOFOCAML = /home/ubuntu/.opam/4.01.0/lib/js_of_ocaml
+STUBLIBS = /home/ubuntu/.opam/4.01.0/lib/stublibs/
 CAMLINCLUDES = -I $(CAMLGRAPH) -I $(STUBLIBS)
 DLLS=-dllpath-pkg lwt,lwt.unix -dllpath $(STUBLIBS)
 
@@ -90,10 +90,10 @@ $(REPL): depend $(CMXFILES) $(REPLMAIN).cmx
 $(REPL).byt: depend $(CMIFILES) $(CMOFILES) $(REPLMAIN).cmo
 	$(CAMLBYT) $(CAMLINCLUDES) -o $@ $(LIBDEPS) $(CMOFILES) $(REPLMAIN).cmo
 
-CAMLFIND = /home/richard/.opam/4.01.0/bin/ocamlfind
+CAMLFIND = /home/ubuntu/.opam/4.01.0/bin/ocamlfind
 JSCAMLBYT = $(CAMLFIND) $(CAMLBYT) -package js_of_ocaml -package js_of_ocaml.syntax \
 		-syntax camlp4o -I $(STUBLIBS)
-JSOFOCAMLEXE = /home/richard/.opam/4.01.0/bin/js_of_ocaml
+JSOFOCAMLEXE = /home/ubuntu/.opam/4.01.0/bin/js_of_ocaml
 
 
 $(JSMAIN).cmo: $(JSMAIN).ml
@@ -122,7 +122,7 @@ beforedepend: $(CAMLFILES)
 
 depend:: beforedepend $(CAMLFILES)
 
-OCAMLMETRICS=/home/richard/src/ocaml-metrics/src/ocamlmetrics
+OCAMLMETRICS=/home/ubuntu/src/ocaml-metrics/src/ocamlmetrics
 codestats:
 	@echo "Word count"
 	@wc -l $(SRCFILES)
