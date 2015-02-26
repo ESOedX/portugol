@@ -16,7 +16,7 @@ all: interpreter repl js
 # list of targets that should be recompiled every time
 .PHONY: default
 
-CAMLGRAPH = /home/ubuntu/devel/ocamlgraph
+CAMLGRAPH = /home/ubuntu/.opam/4.01.0/lib/ocamlgraph
 JSOFOCAML = /home/ubuntu/.opam/4.01.0/lib/js_of_ocaml
 STUBLIBS = /home/ubuntu/.opam/4.01.0/lib/stublibs/
 CAMLINCLUDES = -I $(CAMLGRAPH) -I $(STUBLIBS)
