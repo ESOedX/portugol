@@ -277,16 +277,17 @@ let on_load _ =
   Dom.appendChild body container;
 
   let dsrc, dsrc_contents = mkPanel "Código"
-  and dstd, dstd_out = mkPanel "Tela"
+  and dstd, dstd_out = mkPanel "Telas"
   and derr, derr_out = mkPanel "Avisos e erros"
   and actions, actions_contents = mkPanel "Ações"
-  and prefs, prefs_contents = mkPanel "Preferências"
+  (* and prefs, prefs_contents = mkPanel "Preferências"*)
   in
 
   let row1 = mkRow ()
   and row2 = mkRow () in
   appendChildren container [row1; row2;];
-  appendSizedChildren row1  [(dsrc, 7); (actions, 3); (prefs, 3);];
+  (* appendSizedChildren row1  [(dsrc, 7); (actions, 3); (prefs, 3);]; *)
+  appendSizedChildren row1  [(dsrc, 7); (actions, 5);];
   appendSizedChildren row2  [(dstd, 6); (derr, 6);];
 
   let ulout = Html.createUl d in
@@ -393,6 +394,8 @@ let on_load _ =
   Dom.appendChild dbuttons clear_button;
   Dom.appendChild dbuttons save_button;
 
+  (* Select Preferencias *)
+  (* 
   let mode_selector = Html.createSelect d in
   mode_selector##className <- Js.string "form-control";
   let option = Html.createOption d in
@@ -419,6 +422,7 @@ let on_load _ =
     );
 
   Dom.appendChild prefs_contents mode_selector;
+  *)
   Js._false
 ;;
 
