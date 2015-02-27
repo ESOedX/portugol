@@ -19,7 +19,7 @@ JSOFOCAML = /home/ubuntu/.opam/4.02.1/lib/js_of_ocaml
 STUBLIBS = /home/ubuntu/.opam/4.02.1/lib/stublibs/
 CAMLINCLUDES = -I $(CAMLGRAPH) -I $(STUBLIBS)
 DLLS=-dllpath-pkg lwt,lwt.unix -dllpath $(STUBLIBS)
-CAMLJS=/home/richard/.opam/4.02.1/bin/js_of_ocaml
+CAMLJS=/home/ubuntu/.opam/4.02.1/bin/js_of_ocaml
 
 # Load the default OCaml rules from the file Caml.mk
 include ./Caml.mk
