@@ -296,7 +296,8 @@ let on_load _ =
   ulout##id <- Js.string "std_out";
 
   let editor  = Html.createTextarea d in
-  editor##value <- Js.string initial_program;
+  (* editor##value <- Js.string initial_program; *)
+  editor##value <- Js.string "";
   Dom.appendChild dsrc_contents editor;
   let mkCodeMirror (id: string) =
     Js.Unsafe.fun_call
