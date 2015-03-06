@@ -277,17 +277,18 @@ let on_load _ =
   Dom.appendChild body container;
 
   let dsrc, dsrc_contents = mkPanel "Código"
-  and dstd, dstd_out = mkPanel "Telas"
+  and dstd, dstd_out = mkPanel "Tela"
   and derr, derr_out = mkPanel "Avisos e erros"
   and actions, actions_contents = mkPanel "Ações"
   (* and prefs, prefs_contents = mkPanel "Preferências"*)
+  and tests, tests_contents = mkPanel "Testes"
   in
 
   let row1 = mkRow ()
   and row2 = mkRow () in
   appendChildren container [row1; row2;];
   (* appendSizedChildren row1  [(dsrc, 7); (actions, 3); (prefs, 3);]; *)
-  appendSizedChildren row1  [(dsrc, 7); (actions, 5);];
+  appendSizedChildren row1  [(dsrc, 7); (actions, 5); (tests, 5);];
   appendSizedChildren row2  [(dstd, 6); (derr, 6);];
 
   let ulout = Html.createUl d in
@@ -393,6 +394,48 @@ let on_load _ =
   Dom.appendChild dbuttons eval_button;
   Dom.appendChild dbuttons clear_button;
   Dom.appendChild dbuttons save_button;
+
+  (* Testar Botões*)
+  let reg_button =
+    Html.createButton
+      ~_type:(Js.string "button")
+      ~name:(Js.string "registrar") d
+  in
+
+  let get_program () =
+    Js.to_string
+      (Js.Unsafe.fun_call
+         cm_editor##getValue
+         [| Js.Unsafe.inject (Js.string "\n") |])
+  in
+
+  reg_button##innerHTML <- Js.string "Registrar";
+  reg_button##className <- Js.string "btn btn-primary";
+  reg_button##id <- Js.string "registrar_id";
+
+  let des_button =
+    Html.createButton
+      ~_type:(Js.string "button") ~name:(Js.string "desfazer") d
+  in
+  des_button##innerHTML <- Js.string "Desfazer";
+  des_button##className <- Js.string "btn btn-primary";
+  des_button##id <- Js.string "desfazer_id";
+
+  let lim_button =
+    Html.createButton
+      ~_type:(Js.string "button") ~name:(Js.string "limpar") d
+  in
+  lim_button##innerHTML <- Js.string "Limpar";
+  lim_button##className <- Js.string "btn btn-primary";
+  lim_button##id <- Js.string "limpar_id";
+
+  let dbuttons = Html.createDiv d in
+  dbuttons##className <- Js.string "btn-group";
+  dbuttons##id <- Js.string "test-buttons";
+  Dom.appendChild tests_contents dbuttons;
+  Dom.appendChild dbuttons reg_button;
+  Dom.appendChild dbuttons des_button;
+  Dom.appendChild dbuttons lim_button;
 
   (* Select Preferencias *)
   (* 
